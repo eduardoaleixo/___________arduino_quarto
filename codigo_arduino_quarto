@@ -1,0 +1,140 @@
+# Include <LiquidCrystal.h>  
+   
+   
+ Lcd LiquidCrystal (8, 9, 4, 5, 6, 7);  
+             
+                    
+              const int lampadaQuarto = 40;
+              const int tomadaVentilador = 41; / / A ONDA LA DAS Variáveis ​​E PORTAS.
+              const int carregadorPC = 42;
+                    boolean botaoApertado = false;
+   
+                             void setup ()   
+ {  
+
+   lcd.begin (16,2);
+  lcd.setCursor (2,0);
+  lcd.print ("Carregando") / / EXIBE NA TELA ESSA ONDA AI, NAS POSIÇÕES DECLARADAS
+  lcd.setCursor (3,1);
+  lcd.print ("Software ...");
+ 
+   atraso (3000);
+   
+  lcd.begin (16,2);
+  lcd.setCursor (2,0);
+  lcd.print ("Bem vindo AO") / / EXIBE NA TELA ESSA ONDA AI, NAS POSIÇÕES DECLARADAS
+  lcd.setCursor (3,1);
+  lcd.print ("AUTO-nomos");
+    
+  atraso (2000);
+  
+  lcd.begin (16,2);
+  lcd.setCursor (0,0);
+  lcd.print ("ONLINE AUTO-NOMO."); / / EXIBE NA TELA ESSA ONDA AI, NAS POSIÇÕES DECLARADAS
+  lcd.setCursor (0,1);
+  lcd.print ("31C05/12/1319: 12");
+        
+                          pinMode (lampadaQuarto, OUTPUT);
+                          pinMode (tomadaVentilador, OUTPUT); / / DETERMINAÇÃO O MODO QUE O PINO VAI ATUAR. ISSO NAO TEM NADA A VER A LOGICA DA TELA.
+                          pinMode (carregadorPC, OUTPUT);
+  
+  Serial.begin (9600) / / ABRI A PORTA SERIAL.
+ }  
+
+          void loop () {
+            
+                          int botao;
+                          botao = analogRead (0);
+                          int teste;
+                          Entrada de char = Serial.read ();
+  
+
+  botao = analogRead (0) / / E ALOCADA NESSA Variável O VALOR DA ENTRADA Determinado.
+
+
+                
+                  lcd.setCursor (0,1);   
+                  * / ifs NOS um Baixo eu Quis Montar algoritmo fazer Tipo, Tudo Vai Estar Desligado, 
+                  ai when eu der um Entrada Opaco o pulso para liberado na saida e Acionar la oque eu quizer Vai elementos exibir na Tela.
+                  blz. mas DEPOIS pensei Que ia da Errado e Realmente deu, eu Preciso Que o Texto a exibir na Tela when eu der uma Entrada
+                  pecisa serviços armazenada n'uma variavel e ESSA varial Ser Chamada na Hora Opaco para exibir dentros dos ifs, tu entendeu? * /
+                   
+                          if (botao <= 100) {/ / <100 e uma seta pra Direita.
+                              lcd.begin (16,2);
+                              lcd.setCursor (0,0);
+                              lcd.print ("AMBIENTE STATUS.");                  
+                              lcd.setCursor (0,1);
+                              lcd.print ("Lampada OFF");
+                              Serial.println ("Lampada OFF.");
+                              
+                           }
+
+                   
+                   
+                   
+                  else if (botao <= 200) {/ / (botao <= 200) se não Lugar do botao <200 eu quizer botar o <400 Opaco o botao parágrafo Baixo? MESMO usando elementos los outra função, se eu botar Dois ifs com <400 elementos Vai Para O ultimo caso, mas Quero Que elementos va hum se de Cada Vez com o MESMO valor, temperatura Opaco USAR UM contador?
+                           
+                     lcd.begin (16,2);
+                             lcd.setCursor (0,0);
+                             lcd.print ("AMBIENTE STATUS.");
+                             lcd.setCursor (0,1);
+                             lcd.print ("ventilador desligado.");
+                             Serial.println ("ventilador desligado."); 
+                         }  
+                   
+                  else if (botao <= 400) {
+                         lcd.begin (16,2);
+                             lcd.setCursor (0,0);
+                             lcd.print ("AMBIENTE STATUS.");
+                             lcd.setCursor (0,1);
+                             lcd.print ("Carregador OFF.");
+                             Serial.println ("Carregador OFF."); 
+                 }
+                 
+                 
+                   else if (botao <= 600) {
+                             
+                            lcd.setCursor (0,0);     
+                            lcd.begin (16,2);
+                            lcd.setCursor (0,0);
+                            lcd.print ("AUTO-NOMO ONLINE.");         
+                            lcd.setCursor (0,1);
+                            lcd.print ("31C05/12/1319: 12");
+  
+            }
+  
+  
+  
+           if (Entrada == '2 ') {
+              digitalWrite (lampadaQuarto, HIGH);
+              lcd.print ("Lampada ON."); 
+              Serial.println ("Lampada ON.");
+           }
+           else if (Entrada == '3 ') {
+              digitalWrite (lampadaQuarto, LOW);
+              lcd.print ("Lampada OFF."); 
+              Serial.println ("Lampada OFF."); 
+          }
+          else if (Entrada == '4 ') {
+              digitalWrite (tomadaVentilador, HIGH);
+              lcd.print ("Ventilador ON."); 
+              Serial.println ("Ventilador ON.");
+          }
+          else if (Entrada == '5 ') {
+              digitalWrite (tomadaVentilador, LOW);
+              lcd.print ("ventilador desligado.");
+              Serial.println ("ventilador desligado."); 
+          }
+          else if (Entrada == '6 ') {
+              digitalWrite (carregadorPC, HIGH);
+              lcd.print ("Carregador ON."); 
+              Serial.println ("Carregador ON."); 
+          }
+          else if (Entrada == '7 ') {
+              digitalWrite (carregadorPC, LOW);
+              lcd.print ("Carregador OFF."); 
+              Serial.println ("Carregador OFF.");
+          }
+    
+
+ }
